@@ -1,0 +1,75 @@
+<div class="add-row-editable-table">
+    <button class="btn btn-primary" ng-click="addCar()">添加</button>
+</div>
+<table class="table table-bordered table-hover table-condensed" style="text-align: center;">
+    <tr>
+        <td width="5%"></td>
+        <td width="15%">车辆编号</td>
+        <td width="10%">车系</td>
+        <td width="15%">配置</td>
+        <td width="10%">颜色</td>
+        <td width="15%">入库时间</td>
+        <td width="10%">定价</td>
+        <td width="20%">操作</td>
+    </tr>
+    <tr ng-repeat="car in cars" class="editable-row">
+        <td>
+            {{$index}}
+        </td>
+        <td>
+        <span editable-text="car.number" e-name="number" e-form="rowform" e-required>
+          {{ car.number || '未设置' }}
+        </span>
+        </td>
+        <td class="select-td">
+        <span editable-select="car.type" e-name="type" e-form="rowform"
+              e-ng-options="t.value as t.text for t in types">
+          {{ showType(car) }}
+        </span>
+        </td>
+        <td class="select-td">
+        <span editable-select="car.config" e-name="config" e-form="rowform"
+              e-ng-options="c.value as c.text for c in configs">
+          {{ showConfig(car) }}
+        </span>
+        </td>
+        <td class="select-td">
+        <span editable-select="car.color" e-name="color" e-form="rowform"
+              e-ng-options="r.value as r.text for r in colors">
+          {{ showColor(car) }}
+        </span>
+        </td>
+        <td class="select-td">
+        <span editable-select="car.color" e-name="color" e-form="rowform"
+              e-ng-options="st.value as st.text for st in colors">
+          {{ showColor(car) }}
+        </span>
+        </td>
+        <td>
+       <span editable-text="car.price" e-name="number" e-form="rowform" e-required>
+          {{ car.price || '未设置' }}
+        </span>
+        </td>
+        <td>
+            <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline"
+                  shown="inserted == car" onbeforesave="saveCar($data, car.id)">
+                <button type="submit" ng-disabled="rowform.$waiting"
+                        class="btn btn-primary editable-table-button btn-xs">
+                    保存
+                </button>
+                <button ng-if="car.id !== null" e-form="rowAddForm rowEditForm" type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()"
+                        class="btn btn-default editable-table-button btn-xs">
+                    取消
+                </button>
+                <button ng-if="car.id == null" e-form="rowAddForm rowEditForm" type="button" ng-disabled="rowform.$waiting" ng-click="removeCar($index)"
+                        class="btn btn-default editable-table-button btn-xs">
+                    取消
+                </button>
+            </form>
+            <div class="buttons" ng-show="!rowform.$visible">
+                <button class="btn btn-primary editable-table-button btn-xs" ng-click="rowform.$show()">编辑</button>
+                <button class="btn btn-danger editable-table-button btn-xs" ng-click="removeCar($index)">删除</button>
+            </div>
+        </td>
+    </tr>
+</table>
