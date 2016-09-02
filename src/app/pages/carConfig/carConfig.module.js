@@ -17,7 +17,7 @@
                 title: '车辆配置',
                 sidebarMeta: {
                     icon: 'ion-gear-a',
-                    order: 50,
+                    order: 50
                 }
             });
     }
