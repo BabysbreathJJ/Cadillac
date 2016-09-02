@@ -3,7 +3,7 @@
 *.iml
 
 ## Directory-based project format:
-.idea/
+/.idea/
 # if you remove the above rule, at least ignore the following:
 
 # User-specific stuff:
@@ -49,7 +49,7 @@ node_modules
 gulp.1
 build
 
-.temp/
+/.temp/
 /src/release
 /release
 /bower_components
