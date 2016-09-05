@@ -8,7 +8,7 @@
         .config(routeConfig);
 
     /** @ngInject */
-    function routeConfig($stateProvider) {
+    function routeConfig($stateProvider,USER_ROLES) {
         $stateProvider
             .state('carConfig', {
                 url: '/carConfig',
@@ -16,8 +16,11 @@
                 controller: 'CarConfigCtrl',
                 title: '车辆配置',
                 sidebarMeta: {
-                    icon: 'ion-gear-a',
-                    order: 50
+                    icon: 'ion-compose',
+                    order: 0
+                },
+                data: {
+                    authorizedRoles: [USER_ROLES.sales]
                 }
             });
     }

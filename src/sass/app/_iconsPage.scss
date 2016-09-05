@@ -39,12 +39,17 @@ a.see-all-icons {
 
 .kameleon-row {
   display: inline-block;
-  min-width: 102px;
+  //min-width: 102px;
   width: 20%;
+  cursor: pointer;
   .kameleon-icon {
-    padding:0 10px;
+    padding: 0 10px;
     img {
       width: 81px;
+    }
+    i {
+      font-size: 16px;
+      color: $primary;
     }
   }
 }
@@ -82,10 +87,14 @@ a.see-all-icons {
   img {
     width: 100%;
   }
+  i {
+    width: 100%;
+  }
   span {
     display: block;
     text-align: center;
     white-space: nowrap;
+    color: $primary;
   }
 }
 
