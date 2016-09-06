@@ -45,17 +45,20 @@
         $scope.getConfigs = function (lineNo) {
             CarConfigService.getConfig(lineNo).success(function (data, status) {
                 $scope.configs = data.data;
-                console.log(data.data);
             });
         };
 
         $scope.editRow = function (rowform, lineId) {
+            $scope.clearConfigsColors();
             rowform.$show();
-            console.log(lineId);
             $scope.getConfigs(lineId);
             //    之后添加获得颜色的函数
         };
 
+        $scope.clearConfigsColors = function(){
+            $scope.configs = [];
+            $scope.colors = [];
+        };
 
         $scope.colors = [
             {name: '红'},
@@ -66,14 +69,6 @@
             {name: '蓝'}
         ];
 
-
-        $scope.showLine = function (car) {
-            var selected = [];
-            if (car.line) {
-                selected = $filter('filter')($scope.lines, {id: car.line.id});
-            }
-            return selected.length ? selected[0].name : '未设置';
-        };
 
 
         $scope.showAddTime = function (car) {
@@ -91,11 +86,15 @@
         };
 
         $scope.removeCar = function (index) {
+            $scope.clearConfigsColors();
             $scope.cars.splice(index, 1);
+
+            $scope.pageChanged();
             //    之后要和后台交互
         };
 
         $scope.addCar = function () {
+            $scope.clearConfigsColors();
             $scope.inserted = {
                 id: null,
                 name: '',

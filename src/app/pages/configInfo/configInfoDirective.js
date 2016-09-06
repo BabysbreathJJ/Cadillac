@@ -128,7 +128,7 @@
                         else {
                             config.showColors = selectedConfig.showColor;
                             config.$emit('showColors', selectedConfig.showColor);
-                            config.$emit('colors',selectedConfig.configid);
+                            config.$emit('colors', selectedConfig.configid);
                         }
                     });
                 };
@@ -159,12 +159,17 @@
             require: '^?container',
             scope: {
                 linename: '=lineName',
-                lineid: '=lineId'
+                lineid: '=lineId',
+                carlineChecked: '=lineChecked'
             },
-            template: '<div class="carline"><div class="col-md-3 col-xs-6"> {{linename}}' +
+            template: '<div class="col-md-3 col-xs-6">' +
+            '<div class="checkbox" ng-show="edit">' +
+            '<label class="custom-checkbox">' +
+            '<input type="checkbox"  ng-model="carlineChecked">' +
+            '<span>{{linename}}</span></label> </div><span ng-show="!edit">{{linename}}</span>' +
             '<i class="ion-ios-plus-outline addIcon config-icon" ng-show="(!showConfig)&&edit" ng-transclude ng-click="toggle()"></i>' +
             '<i class="ion-chevron-left addIcon config-icon" ng-show="showConfig" ng-transclude ng-click="toggle()"></i>' +
-            '</div></div>',
+            '</div>',
             link: function (scope, element, attrs, containerController) {
                 scope.showConfig = false;
 

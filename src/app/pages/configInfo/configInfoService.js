@@ -13,10 +13,12 @@
         var getLinesRequest = function(){
             var lines = [{
                 name: 'XT5',
-                id: 1
+                id: 1,
+                checked: true
             }, {
                 name: 'CT6',
-                id: 2
+                id: 2,
+                checked: false
             }];
             return lines;
         };

@@ -9,23 +9,22 @@
         .controller('ConfigInfoCtrl', ConfigInfoCtrl);
 
     /** @ngInject */
-    function ConfigInfoCtrl($scope, $filter, ConfigInfoService) {
+    function ConfigInfoCtrl($scope, $filter, CarConfigService) {
 
-        $scope.lines = ConfigInfoService.getLines();
+         CarConfigService.getLines().success(function(data){
+             $scope.lines = data.data;
+         });
 
 
         $scope.$on('configs', function (d, data) {
-            //ConfigInfoService.getConfigs(data).success(function(data){
-            //    $scope.configs = data;
-            //});
 
-            $scope.configs = ConfigInfoService.getConfigs(data);
+            $scope.configs = CarConfigService.getConfigs(data);
 
         });
 
         $scope.$on('colors', function (d, data) {
             //console.log('colors start');
-            $scope.colors = ConfigInfoService.getColors(data);
+            $scope.colors = CarConfigService.getColors(data);
         });
 
         $scope.edit = false;

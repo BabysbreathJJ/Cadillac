@@ -23,8 +23,8 @@
         </td>
         <td class="select-td">
         <span editable-select="car.line.id" e-name="line.id" e-form="rowform"
-              e-ng-options="line.id as line.name for line in lines">
-          {{ showLine(car) }}
+              e-ng-options="line.id as line.name for line in lines" e-ng-change="getConfigs($data)">
+          {{ car.line.name || '未设置' }}
         </span>
         </td>
         <td class="select-td">

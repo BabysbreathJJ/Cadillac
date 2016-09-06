@@ -22,7 +22,7 @@
     }
 
     .carline {
-        /*margin: 5px;*/
+        margin: 5px 0;
     }
 
     .checkbox {
@@ -59,7 +59,7 @@
                     <div class="col-xs-6 col-md-3 heading-widget"><h4>颜色</h4></div>
                     <div class="col-xs-6 col-md-3">
                         <div class="row primary">
-                            <div class="kameleon-row"  ng-show="!edit" ng-click="startEdit()">
+                            <div class="kameleon-row" ng-show="!edit" ng-click="startEdit()">
                                 <div class="kameleon-icon">
                                     <i class="ion-edit"></i>
                                     <span>编辑</span>
@@ -84,7 +84,8 @@
                 <div class="row">
                     <container>
                         <configinfo ng-repeat="carline in lines">
-                            <carline class="carline" line-name="carline.name" line-id="carline.id">
+                            <carline class="carline" line-name="carline.name" line-id="carline.id"
+                                     line-checked="carline.checked">
                             </carline>
                             <div class="col-md-6 col-xs-12">
                                 <div ng-show="showConfigs">
